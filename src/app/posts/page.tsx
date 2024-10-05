@@ -15,9 +15,9 @@ export default async function PostPage() {
   // console.log(userData)
   return(
     <main className="flex flex-col items-center pag-y-5 pt-24 text-center"> 
-      <h1 className="text-3xl font-semibold">All Posts ({userData.post.length})</h1>
+      <h1 className="text-3xl font-semibold">All Posts ({userData?.post.length})</h1>
       <ul className="border-t border-b border-black\10 py-5 leading-8">
-        {userData.post.map((post)=> 
+        {userData?.post.map((post)=> 
           <li key={post.id}>
             <Link href={`posts/${post.slug}`}> {post.title}</Link>
           </li>

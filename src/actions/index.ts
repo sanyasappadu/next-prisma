@@ -5,8 +5,9 @@ import { Prisma } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 export async function createPost(formData: FormData) {
+  console.log("formdata", formData.get("title"), formData.get("content"))
   try {
-    await prisma.post.create({
+    const userr=await prisma.post.create({
       data:{
         title: formData.get("title") as string,
         slug: (formData.get("title") as string)
@@ -18,8 +19,10 @@ export async function createPost(formData: FormData) {
             email:"sunny@gmail.com"
           }
         }
+        // authorId: "cm1ua6zia00009nyl8zpsph4o"
       }
     })
+    console.log("userdata", userr)
   } catch (error) {
     if (error instanceof Prisma.PrismaClientKnownRequestError) {
       if(error.code === "P2002"){
